@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var loans = [Loan]()
+    
+    // End point for parse the data
     let url = "https://api.kivaws.org/v1/loans/newest.json"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    // MARK:- UITableView Delegate methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -52,6 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return true
     }
     
+    // MARK: - Methods for parse the data
     func getData() {
         
         guard let loanUrl = URL(string: url) else {
@@ -73,10 +78,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
             
-            }
-            
-          task.resume()
         }
+        
+        task.resume()
+    }
     
     func parseJson(data: Data) -> [Loan] {
         
@@ -100,8 +105,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Error: \(error.localizedDescription)")
         }
         return loans
-     }
-        
     }
+    
+}
 
 
