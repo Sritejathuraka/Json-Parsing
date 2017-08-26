@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var loans = [Loan]()
     
-    // End point for parse the data
+    // End point for parse the Json data
     let url = "https://api.kivaws.org/v1/loans/newest.json"
     override func viewDidLoad() {
         super.viewDidLoad()
